@@ -1,7 +1,7 @@
 const quickLinks = ['About', 'Services', 'Testimonials', 'FAQ', 'Book a Session', 'Contact']
 const legal = [
-  { label: 'Privacy Policy', href: 'https://docs.google.com/document/d/1YbtLDygmy0Uu2FceE53X51ZizoxQcSRSLOVtIWW1ByI/edit?usp=sharing' },
-  { label: 'Terms of Service', href: 'https://docs.google.com/document/d/1ysm7HVlVsMph4Xyg_Ah5iqBQokrI2hH0xP2qYVYueIk/edit?usp=sharing' },
+  { label: 'Privacy Policy', href: 'https://docs.google.com/document/d/1YbtLDygmy0Uu2FceE53X51ZizoxQcSRSLOVtIWW1ByI/preview' },
+  { label: 'Terms of Service', href: 'https://docs.google.com/document/d/1ysm7HVlVsMph4Xyg_Ah5iqBQokrI2hH0xP2qYVYueIk/preview' },
   { label: 'Good Faith Estimate', href: '#' },
   { label: 'HIPAA Notice', href: '#' },
 ]
