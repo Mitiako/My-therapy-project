@@ -79,10 +79,14 @@ export default function Navbar({ onBookClick }) {
 
         <a href="#" className="flex items-center gap-3" onClick={e => handleLink(e, '#hero')}>
           <img 
-            src="/My-therapy-project/HarmoniaVitalis-logo.png" 
-            alt="HarmoniaVitalis logo" 
-            className="h-10 w-auto flex-shrink-0"
-          />
+  src="/My-therapy-project/HarmoniaVitalis-logo.png" 
+  alt="HarmoniaVitalis logo" 
+  className="h-14 w-auto flex-shrink-0"
+/>
+<span className="font-heading font-semibold text-lg tracking-wide">
+  <span style={{ color: 'var(--color-forest)' }}>Harmonia</span>
+  <span style={{ background: 'linear-gradient(135deg, #C97A63, #E8A87C)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Vitalis</span>
+</span>
         </a>
 
         <div className="hidden lg:flex items-center gap-8">
