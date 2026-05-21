@@ -10,15 +10,11 @@ import Booking from './components/Booking'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import Modal from './components/Modal'
-import Toast from './components/Toast'
 import { useModal } from './hooks/useModal'
-import { useToast } from './hooks/useToast'
 
 export default function App() {
   const { isOpen, serviceType, openModal, closeModal } = useModal()
-  const { toast, showToast, hideToast } = useToast()
 
-  // Scroll reveal
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -31,7 +27,6 @@ export default function App() {
 
     const elements = document.querySelectorAll('.reveal')
     elements.forEach(el => observer.observe(el))
-
     return () => observer.disconnect()
   }, [])
 
@@ -45,17 +40,11 @@ export default function App() {
         <BookingBand onBookClick={() => openModal('Individual Therapy')} />
         <Testimonials />
         <FAQ />
-        <Booking onSuccess={showToast} />
-        <Contact onSuccess={showToast} />
+        <Booking />
+        <Contact />
       </main>
       <Footer />
-      <Modal
-        isOpen={isOpen}
-        serviceType={serviceType}
-        onClose={closeModal}
-        onSuccess={showToast}
-      />
-      <Toast toast={toast} onHide={hideToast} />
+      <Modal isOpen={isOpen} serviceType={serviceType} onClose={closeModal} />
     </>
   )
 }

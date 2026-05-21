@@ -6,7 +6,6 @@ export default function Hero({ onBookClick }) {
 
   return (
     <section id="hero" className="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden pt-[68px]">
-      {/* Background - adapts to theme */}
       <div className="absolute inset-0 z-0 transition-all duration-500"
         style={{
           background: `
@@ -16,35 +15,35 @@ export default function Hero({ onBookClick }) {
           `
         }} />
 
-      <div className="relative z-10 max-w-3xl mx-auto px-6 py-20 text-center">
-        <span className="inline-block px-5 py-2 rounded-full text-xs tracking-widest font-medium mb-8
+      <div className="relative z-10 max-w-3xl mx-auto px-6 py-16 text-center">
+        <span className="inline-block px-4 py-1.5 rounded-full text-xs tracking-widest font-medium mb-6
           border border-theme text-muted
           opacity-0 animate-[fadeUp_0.8s_ease_0.1s_forwards]">
           Online Therapy in Texas
         </span>
 
         <h1 className="font-heading font-bold leading-tight mb-2 text-theme
-          text-5xl md:text-6xl lg:text-7xl
+          text-4xl sm:text-5xl md:text-6xl lg:text-7xl
           opacity-0 animate-[fadeUp_0.8s_ease_0.3s_forwards]">
           Find clarity and
         </h1>
         <h1 className="font-heading font-semibold italic leading-tight
-          text-5xl md:text-6xl lg:text-7xl
+          text-4xl sm:text-5xl md:text-6xl lg:text-7xl
           opacity-0 animate-[fadeUp_0.8s_ease_0.5s_forwards]"
           style={{ color: 'var(--color-terra)' }}>
           emotional safety.
         </h1>
 
-        <p className="mt-8 mb-10 text-lg text-muted max-w-xl mx-auto leading-relaxed
+        <p className="mt-6 mb-8 text-base sm:text-lg text-muted max-w-xl mx-auto leading-relaxed
           opacity-0 animate-[fadeUp_0.8s_ease_0.7s_forwards]">
           Compassionate online therapy for individuals, couples, and families.
           A dedicated space to heal, grow, and reconnect from the comfort of your home.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center
+        <div className="flex flex-col sm:flex-row gap-3 justify-center items-center
           opacity-0 animate-[fadeUp_0.8s_ease_0.9s_forwards]">
           <button onClick={onBookClick}
-            className="flex items-center justify-center gap-2 px-8 py-4 text-white
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 text-white
               rounded-full font-semibold text-base transition-all
               hover:-translate-y-0.5 shadow-lg hover:shadow-xl"
             style={{ background: 'var(--color-forest)' }}>
@@ -54,7 +53,7 @@ export default function Hero({ onBookClick }) {
             </svg>
           </button>
           <button onClick={() => scrollTo('#contact')}
-            className="flex items-center justify-center px-8 py-4 border-2 rounded-full
+            className="w-full sm:w-auto flex items-center justify-center px-6 py-3.5 border-2 rounded-full
               font-semibold text-base transition-all hover:-translate-y-0.5"
             style={{ borderColor: 'var(--color-terra)', color: 'var(--color-terra)' }}
             onMouseEnter={e => { e.currentTarget.style.background = 'var(--color-terra)'; e.currentTarget.style.color = '#fff' }}
@@ -63,16 +62,18 @@ export default function Hero({ onBookClick }) {
           </button>
         </div>
 
-        <p className="mt-6 text-xs text-faint tracking-wide
+        <p className="mt-5 text-xs text-faint tracking-wide
           opacity-0 animate-[fadeUp_0.8s_ease_1.1s_forwards]">
           Available to clients located in Texas only · Online sessions
         </p>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1
+      {/* Hide scroll hint on mobile to avoid overlap */}
+      <div className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-1
         opacity-0 animate-[fadeUp_0.8s_ease_1.5s_forwards]">
         <span className="text-[10px] tracking-[0.15em] text-faint">SCROLL</span>
-        <div className="w-px h-12 scroll-line" style={{ background: 'linear-gradient(to bottom, var(--color-text-faint), transparent)' }} />
+        <div className="w-px h-12 scroll-line"
+          style={{ background: 'linear-gradient(to bottom, var(--color-text-faint), transparent)' }} />
       </div>
 
       <style>{`

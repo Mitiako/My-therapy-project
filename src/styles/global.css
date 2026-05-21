@@ -4,13 +4,25 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Force our own color scheme - ignore system dark mode */
+/* Force our own color scheme - block ALL browser forced dark modes */
 html {
   color-scheme: light;
+  forced-color-adjust: none;
 }
 
 html.dark {
   color-scheme: dark;
+  forced-color-adjust: none;
+}
+
+/* Block Edge/Chrome forced dark mode */
+:root {
+  forced-color-adjust: none;
+}
+
+* {
+  -webkit-forced-color-adjust: none;
+  forced-color-adjust: none;
 }
 
 /* ── CSS Variables ── */

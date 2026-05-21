@@ -1,18 +1,13 @@
-import { useState } from 'react'
+import { useForm, ValidationError } from '@formspree/react'
 
-export default function Booking({ onSuccess }) {
-  const [form, setForm] = useState({ clientName: '', clientEmail: '', clientPhone: '', preferredDate: '', preferredTime: '', sessionTypePreference: '', additionalNotes: '' })
-  const [submitting, setSubmitting] = useState(false)
-  const handleChange = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }))
-  const handleSubmit = async e => {
-    e.preventDefault(); setSubmitting(true)
-    await new Promise(r => setTimeout(r, 1200))
-    onSuccess('Booking Request Sent ✓', 'Thank you! We will contact you within 24 hours to confirm your session.')
-    setForm({ clientName: '', clientEmail: '', clientPhone: '', preferredDate: '', preferredTime: '', sessionTypePreference: '', additionalNotes: '' })
-    setSubmitting(false)
+export default function Booking() {
+  const [state, handleSubmit] = useForm('mkoernqd')
+
+  const inputStyle = {
+    background: 'var(--color-bg)',
+    border: '1.5px solid var(--color-border)',
+    color: 'var(--color-text)'
   }
-
-  const inputStyle = { background: 'var(--color-bg)', border: '1.5px solid var(--color-border)', color: 'var(--color-text)' }
 
   return (
     <section id="booking" className="section-py transition-colors duration-500" style={{ background: 'var(--color-bg)' }}>
@@ -22,6 +17,8 @@ export default function Booking({ onSuccess }) {
           <p className="text-muted text-lg leading-relaxed">Take the first step towards healing and growth. Schedule your 50-minute online therapy session today.</p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+
+          {/* Info */}
           <div className="reveal from-left space-y-6">
             <div className="rounded-3xl p-8" style={{ background: 'var(--color-bg-alt)' }}>
               <h3 className="font-heading font-semibold text-theme text-xl mb-6">Session Details</h3>
@@ -50,60 +47,73 @@ export default function Booking({ onSuccess }) {
               </ul>
             </div>
           </div>
+
+          {/* Form */}
           <div className="reveal from-right">
-            <form onSubmit={handleSubmit} className="rounded-3xl p-8 space-y-5" style={{ background: 'var(--color-bg-alt)', boxShadow: 'var(--shadow-md)' }}>
-              {[
-                { label: 'Full Name *', name: 'clientName', type: 'text', placeholder: 'Jane Doe' },
-                { label: 'Email Address *', name: 'clientEmail', type: 'email', placeholder: 'jane@example.com' },
-                { label: 'Phone Number *', name: 'clientPhone', type: 'tel', placeholder: '+1 (555) 000-0000' },
-              ].map(f => (
-                <div key={f.name}>
-                  <label className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">{f.label}</label>
-                  <input type={f.type} name={f.name} value={form[f.name]} onChange={handleChange}
-                    placeholder={f.placeholder} required
-                    className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-colors font-body"
-                    style={inputStyle} />
+            {state.succeeded ? (
+              <div className="rounded-3xl p-8 flex flex-col items-center justify-center gap-4 py-16"
+                style={{ background: 'var(--color-bg-alt)', boxShadow: 'var(--shadow-md)' }}>
+                <div className="text-5xl">✅</div>
+                <h3 className="font-heading font-bold text-theme text-2xl">Booking Request Sent!</h3>
+                <p className="text-muted text-center">Thank you! We will contact you within 24 hours to confirm your session.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="rounded-3xl p-8 space-y-5"
+                style={{ background: 'var(--color-bg-alt)', boxShadow: 'var(--shadow-md)' }}>
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">Full Name *</label>
+                  <input type="text" name="clientName" placeholder="Jane Doe" required
+                    className="w-full px-4 py-3 rounded-xl text-sm outline-none font-body" style={inputStyle} />
+                  <ValidationError field="clientName" errors={state.errors} className="text-red-500 text-xs mt-1" />
                 </div>
-              ))}
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { label: 'Preferred Date *', name: 'preferredDate', type: 'date' },
-                  { label: 'Preferred Time *', name: 'preferredTime', type: 'time' },
-                ].map(f => (
-                  <div key={f.name}>
-                    <label className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">{f.label}</label>
-                    <input type={f.type} name={f.name} value={form[f.name]} onChange={handleChange} required
-                      className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-colors font-body"
-                      style={inputStyle} />
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">Email Address *</label>
+                  <input type="email" name="email" placeholder="jane@example.com" required
+                    className="w-full px-4 py-3 rounded-xl text-sm outline-none font-body" style={inputStyle} />
+                  <ValidationError field="email" errors={state.errors} className="text-red-500 text-xs mt-1" />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">Phone Number *</label>
+                  <input type="tel" name="clientPhone" placeholder="+1 (555) 000-0000" required
+                    className="w-full px-4 py-3 rounded-xl text-sm outline-none font-body" style={inputStyle} />
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">Preferred Date *</label>
+                    <input type="date" name="preferredDate" required
+                      className="w-full px-4 py-3 rounded-xl text-sm outline-none font-body" style={inputStyle} />
                   </div>
-                ))}
-              </div>
-              <div>
-                <label className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">Session Type *</label>
-                <select name="sessionTypePreference" value={form.sessionTypePreference} onChange={handleChange} required
-                  className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-colors font-body"
-                  style={inputStyle}>
-                  <option value="">Select a session type</option>
-                  <option>Individual Therapy</option>
-                  <option>Couples Therapy</option>
-                  <option>Family Therapy</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">Additional Notes (Optional)</label>
-                <textarea name="additionalNotes" value={form.additionalNotes} onChange={handleChange}
-                  rows={4} placeholder="Anything you'd like me to know..."
-                  className="w-full px-4 py-3 rounded-2xl text-sm outline-none transition-colors font-body resize-none"
-                  style={inputStyle} />
-              </div>
-              <button type="submit" disabled={submitting}
-                className="w-full py-4 rounded-full font-semibold transition-all disabled:opacity-50"
-                style={{ background: 'var(--color-sage)', color: 'var(--color-forest)' }}>
-                {submitting ? 'Submitting...' : 'Submit Booking Request'}
-              </button>
-              <p className="text-xs text-faint text-center">* Required fields</p>
-            </form>
+                  <div>
+                    <label className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">Preferred Time *</label>
+                    <input type="time" name="preferredTime" required
+                      className="w-full px-4 py-3 rounded-xl text-sm outline-none font-body" style={inputStyle} />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">Session Type *</label>
+                  <select name="sessionType" required
+                    className="w-full px-4 py-3 rounded-xl text-sm outline-none font-body" style={inputStyle}>
+                    <option value="">Select a session type</option>
+                    <option>Individual Therapy</option>
+                    <option>Couples Therapy</option>
+                    <option>Family Therapy</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">Additional Notes (Optional)</label>
+                  <textarea name="additionalNotes" rows={4} placeholder="Anything you'd like me to know..."
+                    className="w-full px-4 py-3 rounded-2xl text-sm outline-none font-body resize-none" style={inputStyle} />
+                </div>
+                <button type="submit" disabled={state.submitting}
+                  className="w-full py-4 rounded-full font-semibold transition-all disabled:opacity-50"
+                  style={{ background: 'var(--color-sage)', color: 'var(--color-forest)' }}>
+                  {state.submitting ? 'Submitting...' : 'Submit Booking Request'}
+                </button>
+                <p className="text-xs text-faint text-center">* Required fields</p>
+              </form>
+            )}
           </div>
+
         </div>
       </div>
     </section>

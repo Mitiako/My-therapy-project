@@ -1,17 +1,13 @@
-import { useState } from 'react'
+import { useForm, ValidationError } from '@formspree/react'
 
-export default function Contact({ onSuccess }) {
-  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
-  const [submitting, setSubmitting] = useState(false)
-  const handleChange = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }))
-  const handleSubmit = async e => {
-    e.preventDefault(); setSubmitting(true)
-    await new Promise(r => setTimeout(r, 1200))
-    onSuccess('Message Sent ✓', 'Thank you! We will get back to you within 48 hours.')
-    setForm({ name: '', email: '', subject: '', message: '' }); setSubmitting(false)
+export default function Contact() {
+  const [state, handleSubmit] = useForm('mykvwypb')
+
+  const inputStyle = {
+    background: 'var(--color-bg)',
+    border: '1.5px solid var(--color-border)',
+    color: 'var(--color-text)'
   }
-
-  const inputStyle = { background: 'var(--color-bg)', border: '1.5px solid var(--color-border)', color: 'var(--color-text)' }
 
   return (
     <section id="contact" className="section-py transition-colors duration-500" style={{ background: 'var(--color-bg-alt)' }}>
@@ -21,6 +17,8 @@ export default function Contact({ onSuccess }) {
           <p className="text-muted text-lg">Have questions or need more information? I'm here to help.</p>
         </div>
         <div className="rounded-3xl overflow-hidden reveal grid grid-cols-1 lg:grid-cols-[1fr_1.3fr]" style={{ boxShadow: 'var(--shadow-lg)' }}>
+
+          {/* Info panel */}
           <div className="p-10 flex flex-col gap-8" style={{ background: '#2F4F4F' }}>
             <div>
               <h3 className="font-heading font-bold text-white text-2xl mb-3">Contact Information</h3>
@@ -48,41 +46,57 @@ export default function Contact({ onSuccess }) {
               ))}
             </div>
           </div>
+
+          {/* Form */}
           <div className="p-10" style={{ background: 'var(--color-surface)' }}>
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[{ label: 'Name *', name: 'name', type: 'text', placeholder: 'Jane Doe' },
-                  { label: 'Email *', name: 'email', type: 'email', placeholder: 'jane@example.com' }].map(f => (
-                  <div key={f.name}>
-                    <label className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">{f.label}</label>
-                    <input type={f.type} name={f.name} value={form[f.name]} onChange={handleChange}
-                      placeholder={f.placeholder} required
-                      className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-colors font-body"
-                      style={inputStyle} />
+            {state.succeeded ? (
+              <div className="flex flex-col items-center justify-center h-full gap-4 py-12">
+                <div className="text-5xl">✅</div>
+                <h3 className="font-heading font-bold text-theme text-2xl">Message Sent!</h3>
+                <p className="text-muted text-center">Thank you for reaching out. I'll get back to you within 48 hours.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">Name *</label>
+                    <input type="text" name="name" placeholder="Jane Doe" required
+                      className="w-full px-4 py-3 rounded-xl text-sm outline-none font-body" style={inputStyle} />
+                    <ValidationError field="name" errors={state.errors} className="text-red-500 text-xs mt-1" />
                   </div>
-                ))}
-              </div>
-              <div>
-                <label className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">Subject *</label>
-                <input type="text" name="subject" value={form.subject} onChange={handleChange}
-                  placeholder="How can I help you?" required
-                  className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-colors font-body" style={inputStyle} />
-              </div>
-              <div>
-                <label className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">Message *</label>
-                <textarea name="message" value={form.message} onChange={handleChange} rows={6}
-                  placeholder="Please share a brief overview of what you're looking for..." required
-                  className="w-full px-4 py-3 rounded-2xl text-sm outline-none transition-colors font-body resize-none" style={inputStyle} />
-              </div>
-              <button type="submit" disabled={submitting}
-                className="w-full py-4 rounded-full font-semibold transition-all disabled:opacity-50 flex items-center justify-center gap-2"
-                style={{ background: '#2F4F4F', color: '#fff' }}>
-                {submitting ? 'Sending...' : 'Send Message'}
-                {!submitting && <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>}
-              </button>
-              <p className="text-xs text-faint text-center">Please do not include sensitive medical information in this form.</p>
-            </form>
+                  <div>
+                    <label className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">Email *</label>
+                    <input type="email" name="email" placeholder="jane@example.com" required
+                      className="w-full px-4 py-3 rounded-xl text-sm outline-none font-body" style={inputStyle} />
+                    <ValidationError field="email" errors={state.errors} className="text-red-500 text-xs mt-1" />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">Subject *</label>
+                  <input type="text" name="subject" placeholder="How can I help you?" required
+                    className="w-full px-4 py-3 rounded-xl text-sm outline-none font-body" style={inputStyle} />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">Message *</label>
+                  <textarea name="message" rows={6} placeholder="Please share a brief overview of what you're looking for..." required
+                    className="w-full px-4 py-3 rounded-2xl text-sm outline-none font-body resize-none" style={inputStyle} />
+                  <ValidationError field="message" errors={state.errors} className="text-red-500 text-xs mt-1" />
+                </div>
+                <button type="submit" disabled={state.submitting}
+                  className="w-full py-4 text-white rounded-full font-semibold transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+                  style={{ background: '#2F4F4F', color: '#fff' }}>
+                  {state.submitting ? 'Sending...' : 'Send Message'}
+                  {!state.submitting && (
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                    </svg>
+                  )}
+                </button>
+                <p className="text-xs text-faint text-center">Please do not include sensitive medical information in this form.</p>
+              </form>
+            )}
           </div>
+
         </div>
       </div>
     </section>
