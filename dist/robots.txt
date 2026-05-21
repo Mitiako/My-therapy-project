@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mitiako.github.io/My-therapy-project/sitemap.xml
