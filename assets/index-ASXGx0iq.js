@@ -44,11 +44,9 @@ Error generating stack: `+o.message+`
             var(--color-bg)
           `}}),u.jsxs("div",{className:"relative z-10 max-w-3xl mx-auto px-6 py-16 text-center",children:[u.jsx("span",{className:`inline-block px-4 py-1.5 rounded-full text-xs tracking-widest font-medium mb-6
           border border-theme text-muted
-          opacity-0 animate-[fadeUp_0.8s_ease_0.1s_forwards]`,children:"Online Therapy in Texas"}),u.jsx("h1",{className:`font-heading font-bold leading-tight mb-2 text-theme
+          opacity-0 animate-[fadeUp_0.8s_ease_0.1s_forwards]`,children:"Online Therapy in Texas"}),u.jsxs("h1",{className:`font-heading font-bold leading-tight mb-2 text-theme
           text-4xl sm:text-5xl md:text-6xl lg:text-7xl
-          opacity-0 animate-[fadeUp_0.8s_ease_0.3s_forwards]`,children:"Find clarity and"}),u.jsx("h1",{className:`font-heading font-semibold italic leading-tight
-          text-4xl sm:text-5xl md:text-6xl lg:text-7xl
-          opacity-0 animate-[fadeUp_0.8s_ease_0.5s_forwards]`,style:{color:"var(--color-terra)"},children:"emotional safety."}),u.jsx("p",{className:`mt-6 mb-8 text-base sm:text-lg text-muted max-w-xl mx-auto leading-relaxed
+          opacity-0 animate-[fadeUp_0.8s_ease_0.3s_forwards]`,children:["Find clarity and"," ",u.jsx("span",{className:"font-semibold italic",style:{color:"var(--color-terra)"},children:"emotional safety."})]}),u.jsx("p",{className:`mt-6 mb-8 text-base sm:text-lg text-muted max-w-xl mx-auto leading-relaxed
           opacity-0 animate-[fadeUp_0.8s_ease_0.7s_forwards]`,children:"Compassionate online therapy for individuals, couples, and families. A dedicated space to heal, grow, and reconnect from the comfort of your home."}),u.jsxs("div",{className:`flex flex-col sm:flex-row gap-3 justify-center items-center
           opacity-0 animate-[fadeUp_0.8s_ease_0.9s_forwards]`,children:[u.jsxs("button",{onClick:e,className:`w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 text-white
               rounded-full font-semibold text-base transition-all
