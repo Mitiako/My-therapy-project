@@ -25,13 +25,11 @@ export default function Hero({ onBookClick }) {
         <h1 className="font-heading font-bold leading-tight mb-2 text-theme
           text-4xl sm:text-5xl md:text-6xl lg:text-7xl
           opacity-0 animate-[fadeUp_0.8s_ease_0.3s_forwards]">
-          Find clarity and
-        </h1>
-        <h1 className="font-heading font-semibold italic leading-tight
-          text-4xl sm:text-5xl md:text-6xl lg:text-7xl
-          opacity-0 animate-[fadeUp_0.8s_ease_0.5s_forwards]"
-          style={{ color: 'var(--color-terra)' }}>
-          emotional safety.
+          Find clarity and{' '}
+          <span className="font-semibold italic"
+            style={{ color: 'var(--color-terra)' }}>
+            emotional safety.
+          </span>
         </h1>
 
         <p className="mt-6 mb-8 text-base sm:text-lg text-muted max-w-xl mx-auto leading-relaxed
