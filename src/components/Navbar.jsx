@@ -78,9 +78,11 @@ export default function Navbar({ onBookClick }) {
         style={{ background: 'var(--color-navbar)', backdropFilter: 'blur(16px)' }}>
 
         <a href="#" className="flex items-center gap-3" onClick={e => handleLink(e, '#hero')}>
-          <div className="w-10 h-10 rounded-full flex items-center justify-center font-heading font-bold text-white text-base flex-shrink-0"
-            style={{ background: 'var(--color-forest)' }}>H</div>
-          <span className="font-heading font-semibold text-lg tracking-wide text-theme">HarmoniaVitalis</span>
+          <img 
+            src="/My-therapy-project/HarmoniaVitalis-logo.png" 
+            alt="HarmoniaVitalis logo" 
+            className="h-10 w-auto flex-shrink-0"
+          />
         </a>
 
         <div className="hidden lg:flex items-center gap-8">
