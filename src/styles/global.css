@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Nunito+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── CSS Variables ── */
+:root {
+  --color-bg:          #F7F5F0;
+  --color-bg-alt:      #F3EDE4;
+  --color-surface:     #FFFFFF;
+  --color-border:      rgba(47,79,79,0.10);
+  --color-text:        #2F4F4F;
+  --color-text-muted:  rgba(47,79,79,0.70);
+  --color-text-faint:  rgba(47,79,79,0.50);
+  --color-sage:        #AFC7B2;
+  --color-terra:       #C97A63;
+  --color-forest:      #2F4F4F;
+  --color-forest-soft: rgba(47,79,79,0.08);
+  --color-navbar:      rgba(247,245,240,0.90);
+  --shadow-soft:       0 4px 16px rgba(47,79,79,0.08);
+  --shadow-md:         0 12px 40px rgba(47,79,79,0.12);
+}
+
+/* ── Dark / Evening Mode ── */
+.dark {
+  --color-bg:          #1A2B2B;
+  --color-bg-alt:      #1F3333;
+  --color-surface:     #243535;
+  --color-border:      rgba(175,199,178,0.15);
+  --color-text:        #E8F0EE;
+  --color-text-muted:  rgba(232,240,238,0.75);
+  --color-text-faint:  rgba(232,240,238,0.50);
+  --color-sage:        #7FA896;
+  --color-terra:       #D4896E;
+  /* In dark mode: forest-btn = button background, forest = text color for theme */
+  --color-forest:      #3d6b5a;
+  --color-forest-btn:  #7FA896;
+  --color-forest-text: #E8F0EE;
+  --color-forest-soft: rgba(175,199,178,0.12);
+  --color-navbar:      rgba(22,35,35,0.95);
+  --shadow-soft:       0 4px 16px rgba(0,0,0,0.30);
+  --shadow-md:         0 12px 40px rgba(0,0,0,0.40);
+  --shadow-lg:         0 24px 64px rgba(0,0,0,0.50);
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+}
+
+@layer utilities {
+  .section-py { padding-top: 7rem; padding-bottom: 7rem; }
+
+  .container-custom {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  /* Theme-aware utilities */
+  .bg-theme       { background-color: var(--color-bg); }
+  .bg-theme-alt   { background-color: var(--color-bg-alt); }
+  .bg-surface     { background-color: var(--color-surface); }
+  .text-theme     { color: var(--color-text); }
+  .text-muted     { color: var(--color-text-muted); }
+  .text-faint     { color: var(--color-text-faint); }
+  .border-theme   { border-color: var(--color-border); }
+  .shadow-theme   { box-shadow: var(--shadow-soft); }
+  .shadow-theme-md { box-shadow: var(--shadow-md); }
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.from-left  { transform: translateX(-40px); }
+.reveal.from-right { transform: translateX(40px); }
+.reveal.visible    { opacity: 1; transform: translate(0); }
+
+.delay-1 { transition-delay: 0.10s; }
+.delay-2 { transition-delay: 0.20s; }
+.delay-3 { transition-delay: 0.30s; }
+
+/* Modal */
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.94) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+.modal-enter { animation: modalIn 0.35s ease; }
+
+/* Carousel */
+.carousel-track {
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+/* Hero scroll */
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 1; transform: scaleY(1.2); }
+}
+.scroll-line { animation: scrollPulse 2.2s ease-in-out infinite; }
+
+/* Theme toggle button */
+.theme-toggle {
+  width: 44px;
+  height: 24px;
+  background: var(--color-forest-soft);
+  border: 1.5px solid var(--color-border);
+  border-radius: 12px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.theme-toggle::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-forest);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.dark .theme-toggle::after {
+  transform: translateX(20px);
+  background: var(--color-sage);
+}
