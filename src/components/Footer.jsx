@@ -1,6 +1,10 @@
 const quickLinks = ['About', 'Services', 'Testimonials', 'FAQ', 'Book a Session', 'Contact']
-const legal = ['Privacy Policy', 'Terms of Service', 'Good Faith Estimate', 'HIPAA Notice']
-
+const legal = [
+  { label: 'Privacy Policy', href: 'https://docs.google.com/document/d/1YbtLDygmy0Uu2FceE53X51ZizoxQcSRSLOVtIWW1ByI/edit?usp=sharing' },
+  { label: 'Terms of Service', href: 'https://docs.google.com/document/d/1ysm7HVlVsMph4Xyg_Ah5iqBQokrI2hH0xP2qYVYueIk/edit?usp=sharing' },
+  { label: 'Good Faith Estimate', href: '#' },
+  { label: 'HIPAA Notice', href: '#' },
+]
 export default function Footer() {
   const scrollTo = (id) => {
     const el = document.querySelector(`#${id.toLowerCase().replace(/ /g, '')}`)
@@ -29,9 +33,12 @@ export default function Footer() {
         </div>
         <div>
           <h4 className="font-heading font-bold text-white text-xs uppercase tracking-widest mb-5">Legal</h4>
-          {legal.map(l => (
-            <a key={l} href="#" className="block text-sm text-white/60 hover:text-white transition-colors mb-3">{l}</a>
-          ))}
+       {legal.map(l => (
+  <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer"
+    className="block text-sm text-white/60 hover:text-white transition-colors mb-3">
+    {l.label}
+  </a>
+))}
         </div>
       </div>
       <div className="max-w-container mx-auto mt-10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-white/35"
