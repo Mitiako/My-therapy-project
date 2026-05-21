@@ -42,19 +42,19 @@ Error generating stack: `+o.message+`
             radial-gradient(ellipse at 15% 60%, rgba(201,122,99,0.15) 0%, transparent 55%),
             radial-gradient(ellipse at 85% 20%, rgba(175,199,178,0.20) 0%, transparent 55%),
             var(--color-bg)
-          `}}),u.jsxs("div",{className:"relative z-10 max-w-3xl mx-auto px-6 py-20 text-center",children:[u.jsx("span",{className:`inline-block px-5 py-2 rounded-full text-xs tracking-widest font-medium mb-8
+          `}}),u.jsxs("div",{className:"relative z-10 max-w-3xl mx-auto px-6 py-16 text-center",children:[u.jsx("span",{className:`inline-block px-4 py-1.5 rounded-full text-xs tracking-widest font-medium mb-6
           border border-theme text-muted
           opacity-0 animate-[fadeUp_0.8s_ease_0.1s_forwards]`,children:"Online Therapy in Texas"}),u.jsx("h1",{className:`font-heading font-bold leading-tight mb-2 text-theme
-          text-5xl md:text-6xl lg:text-7xl
+          text-4xl sm:text-5xl md:text-6xl lg:text-7xl
           opacity-0 animate-[fadeUp_0.8s_ease_0.3s_forwards]`,children:"Find clarity and"}),u.jsx("h1",{className:`font-heading font-semibold italic leading-tight
-          text-5xl md:text-6xl lg:text-7xl
-          opacity-0 animate-[fadeUp_0.8s_ease_0.5s_forwards]`,style:{color:"var(--color-terra)"},children:"emotional safety."}),u.jsx("p",{className:`mt-8 mb-10 text-lg text-muted max-w-xl mx-auto leading-relaxed
-          opacity-0 animate-[fadeUp_0.8s_ease_0.7s_forwards]`,children:"Compassionate online therapy for individuals, couples, and families. A dedicated space to heal, grow, and reconnect from the comfort of your home."}),u.jsxs("div",{className:`flex flex-col sm:flex-row gap-4 justify-center
-          opacity-0 animate-[fadeUp_0.8s_ease_0.9s_forwards]`,children:[u.jsxs("button",{onClick:e,className:`flex items-center justify-center gap-2 px-8 py-4 text-white
+          text-4xl sm:text-5xl md:text-6xl lg:text-7xl
+          opacity-0 animate-[fadeUp_0.8s_ease_0.5s_forwards]`,style:{color:"var(--color-terra)"},children:"emotional safety."}),u.jsx("p",{className:`mt-6 mb-8 text-base sm:text-lg text-muted max-w-xl mx-auto leading-relaxed
+          opacity-0 animate-[fadeUp_0.8s_ease_0.7s_forwards]`,children:"Compassionate online therapy for individuals, couples, and families. A dedicated space to heal, grow, and reconnect from the comfort of your home."}),u.jsxs("div",{className:`flex flex-col sm:flex-row gap-3 justify-center items-center
+          opacity-0 animate-[fadeUp_0.8s_ease_0.9s_forwards]`,children:[u.jsxs("button",{onClick:e,className:`w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 text-white
               rounded-full font-semibold text-base transition-all
-              hover:-translate-y-0.5 shadow-lg hover:shadow-xl`,style:{background:"var(--color-forest)"},children:["Book a Session",u.jsx("svg",{width:"18",height:"18",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2.5",children:u.jsx("path",{d:"M5 12h14M12 5l7 7-7 7"})})]}),u.jsx("button",{onClick:()=>t("#contact"),className:`flex items-center justify-center px-8 py-4 border-2 rounded-full
-              font-semibold text-base transition-all hover:-translate-y-0.5`,style:{borderColor:"var(--color-terra)",color:"var(--color-terra)"},onMouseEnter:n=>{n.currentTarget.style.background="var(--color-terra)",n.currentTarget.style.color="#fff"},onMouseLeave:n=>{n.currentTarget.style.background="transparent",n.currentTarget.style.color="var(--color-terra)"},children:"Free Consultation"})]}),u.jsx("p",{className:`mt-6 text-xs text-faint tracking-wide
-          opacity-0 animate-[fadeUp_0.8s_ease_1.1s_forwards]`,children:"Available to clients located in Texas only · Online sessions"})]}),u.jsxs("div",{className:`absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1
+              hover:-translate-y-0.5 shadow-lg hover:shadow-xl`,style:{background:"var(--color-forest)"},children:["Book a Session",u.jsx("svg",{width:"18",height:"18",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2.5",children:u.jsx("path",{d:"M5 12h14M12 5l7 7-7 7"})})]}),u.jsx("button",{onClick:()=>t("#contact"),className:`w-full sm:w-auto flex items-center justify-center px-6 py-3.5 border-2 rounded-full
+              font-semibold text-base transition-all hover:-translate-y-0.5`,style:{borderColor:"var(--color-terra)",color:"var(--color-terra)"},onMouseEnter:n=>{n.currentTarget.style.background="var(--color-terra)",n.currentTarget.style.color="#fff"},onMouseLeave:n=>{n.currentTarget.style.background="transparent",n.currentTarget.style.color="var(--color-terra)"},children:"Free Consultation"})]}),u.jsx("p",{className:`mt-5 text-xs text-faint tracking-wide
+          opacity-0 animate-[fadeUp_0.8s_ease_1.1s_forwards]`,children:"Available to clients located in Texas only · Online sessions"})]}),u.jsxs("div",{className:`hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-1
         opacity-0 animate-[fadeUp_0.8s_ease_1.5s_forwards]`,children:[u.jsx("span",{className:"text-[10px] tracking-[0.15em] text-faint",children:"SCROLL"}),u.jsx("div",{className:"w-px h-12 scroll-line",style:{background:"linear-gradient(to bottom, var(--color-text-faint), transparent)"}})]}),u.jsx("style",{children:`
         @keyframes fadeUp {
           from { opacity: 0; transform: translateY(22px); }
