@@ -83,9 +83,14 @@ export default function Navbar({ onBookClick }) {
   alt="HarmoniaVitalis logo" 
   className="h-14 w-auto flex-shrink-0"
 />
-<span className="font-heading font-semibold text-lg tracking-wide">
-  <span style={{ color: 'var(--color-forest)' }}>Harmonia</span>
-  <span style={{ background: 'linear-gradient(135deg, #C97A63, #E8A87C)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Vitalis</span>
+<span style={{
+  fontFamily: "'Fleur De Leah', cursive",
+  fontSize: '2rem',
+  background: 'linear-gradient(135deg, #4A7C59, #C97A63, #E8A87C)',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+}}>
+  HarmoniaVitalis
 </span>
         </a>
 
