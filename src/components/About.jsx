@@ -1,8 +1,5 @@
-import React, { useState, useEffect, useRef, Suspense } from 'react'
-import instagramAnimation from '../assets/animations/Instagram.json'
+import React, { useState, useEffect, useRef } from 'react'
 import aboutVideo from '../assets/video/about.mp4'
-
-const Lottie = React.lazy(() => import('lottie-react'))
 
 const creds = [
   { icon: '🏅', title: 'Licensed Therapist',  desc: 'Licensed Marriage and Family Therapist in Texas' },
@@ -31,27 +28,77 @@ function InstagramBlock() {
 
   useEffect(() => {
     if (step === 1) {
-      setTimeout(() => setStep(2), 750 + 400) // скоротили на 100мс
+      // спалах відбувається на 95% анімації (10s * 0.95 = 9.5s)
+      setTimeout(() => setStep(2), 9500 + 1000)
     }
     if (step === 2) {
-      setTimeout(() => setStep(3), 200) // скоротили вдвічі
+      setTimeout(() => setStep(3), 400)
     }
   }, [step])
 
   return (
-    <div ref={ref} className="mt-4 h-14 flex items-center">
+    <div ref={ref} className="mt-4 h-20 flex items-center">
       {step >= 1 && (
         <div className="flex items-center">
-          {/* Lottie Instagram icon */}
-          <div className="w-14 h-14 flex-shrink-0">
-            <Suspense fallback={<div className="w-14 h-14" />}>
-              <Lottie
-                animationData={instagramAnimation}
-                loop={false}
-                autoplay={true}
-                onComplete={() => {}}
-              />
-            </Suspense>
+
+          {/* Instagram CSS icon */}
+          <div style={{
+            height: '64px',
+            width: '64px',
+            overflow: 'hidden',
+            borderRadius: '14px',
+            position: 'relative',
+            flexShrink: 0,
+            animation: step === 1 ? 'ig_animate_logo 10s forwards' : 'none',
+            transform: step >= 2 ? 'scale(1)' : undefined,
+          }}>
+            {/* gradient background */}
+            <div style={{
+              position: 'absolute',
+              top: 0, left: 0,
+              width: '100%',
+              height: '2000px',
+              background: 'linear-gradient(135deg, #5335cf 0%, #de005e 25%, #f66e48 50%, #de005e 75%, #5335cf 100%)',
+              animation: step === 1 ? 'ig_animate_bg 10s forwards linear' : 'none',
+            }} />
+
+            {/* border */}
+            <div style={{
+              position: 'absolute',
+              top: '50%', left: '50%',
+              border: '3px #fff solid',
+              borderRadius: '14px',
+              width: '74%', height: '74%',
+              marginTop: '-37%', marginLeft: '-37%',
+              zIndex: 2,
+              animation: step === 1 ? 'ig_animate_border 10s forwards' : 'none',
+              transform: step >= 2 ? 'scale(1)' : undefined,
+            }} />
+
+            {/* circle */}
+            <div style={{
+              position: 'absolute',
+              top: '50%', left: '50%',
+              border: '3px #fff solid',
+              borderRadius: '50%',
+              width: '48%', height: '48%',
+              marginTop: '-24%', marginLeft: '-24%',
+              zIndex: 2,
+              animation: step === 1 ? 'ig_animate_circle 10s forwards' : 'none',
+              transform: step >= 2 ? 'scale(1)' : undefined,
+            }} />
+
+            {/* light dot */}
+            <div style={{
+              position: 'absolute',
+              border: '2px #fff solid',
+              borderRadius: '50%',
+              width: '12%', height: '12%',
+              right: '18%', top: '18%',
+              zIndex: 2,
+              animation: step === 1 ? 'ig_animate_light 10s forwards' : 'none',
+              opacity: step >= 2 ? 1 : undefined,
+            }} />
           </div>
 
           {/* Liquid glass pill */}
@@ -65,10 +112,10 @@ function InstagramBlock() {
                 background: 'rgba(255,255,255,0.15)',
                 border: '1px solid rgba(255,255,255,0.3)',
                 boxShadow: '0 4px 20px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.2)',
-                maxWidth: step === 3 ? '180px' : '0px',
+                maxWidth: step === 3 ? '200px' : '0px',
                 opacity: step === 3 ? 1 : 0,
                 transition: 'max-width 0.4s ease, opacity 0.4s ease',
-                marginLeft: '4px',
+                marginLeft: '8px',
                 paddingLeft: '16px',
                 paddingRight: '16px',
                 height: '40px',
@@ -82,6 +129,44 @@ function InstagramBlock() {
           )}
         </div>
       )}
+
+      <style>{`
+        @keyframes ig_animate_bg {
+          0% { top: 0; }
+          50% { top: -1800px; }
+          95% { top: 0; }
+          100% { top: 0; }
+        }
+        @keyframes ig_animate_logo {
+          0% { transform: scale(0); border-radius: 14px; }
+          5% { transform: scale(1.1); border-radius: 50%; }
+          10% { transform: scale(1); border-radius: 14px; }
+          94% { transform: scale(1); border-radius: 14px; }
+          100% { transform: scale(1); border-radius: 14px; }
+        }
+        @keyframes ig_animate_border {
+          0% { border-radius: 50%; transform: scale(0); opacity: 0; }
+          2% { opacity: 0; }
+          18% { border-radius: 14px; transform: scale(1); opacity: 1; }
+          100% { border-radius: 14px; transform: scale(1); opacity: 1; }
+        }
+        @keyframes ig_animate_circle {
+          0% { transform: scale(0); opacity: 0; }
+          5% { transform: scale(0); opacity: 0; }
+          10% { transform: scale(1.3); opacity: 1; }
+          15% { transform: scale(1); }
+          94% { transform: scale(1); background-color: transparent; }
+          97% { transform: scale(1.2); background-color: #ffffff; }
+          100% { transform: scale(1); background-color: transparent; }
+        }
+        @keyframes ig_animate_light {
+          0% { opacity: 0; }
+          20% { opacity: 0; }
+          25% { opacity: 1; }
+          94% { opacity: 1; }
+          100% { opacity: 1; }
+        }
+      `}</style>
     </div>
   )
 }
