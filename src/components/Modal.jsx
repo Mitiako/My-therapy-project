@@ -70,13 +70,13 @@ export default function Modal({ isOpen, serviceType, onClose }) {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">Date *</label>
-                  <input type="date" name="preferredDate" required
+                  <label htmlFor="modalDate" className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">Date *</label>
+                  <input id="modalDate" type="date" name="preferredDate" required
                     className="w-full px-4 py-3 rounded-xl text-sm outline-none font-body" style={inputStyle} />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">Time *</label>
-                  <select name="preferredTime" required
+                  <label htmlFor="modalTime" className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">Time *</label>
+                  <select id="modalTime" name="preferredTime" required
                     className="w-full px-4 py-3 rounded-xl text-sm outline-none font-body" style={inputStyle}>
                     <option value="">Select a time</option>
                     <option>8:00 AM</option>

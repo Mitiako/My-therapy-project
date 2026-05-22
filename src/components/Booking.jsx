@@ -79,13 +79,13 @@ export default function Booking() {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">Preferred Date *</label>
-                    <input type="date" name="preferredDate" required
+                    <label htmlFor="preferredDate" className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">Preferred Date *</label>
+                    <input id="preferredDate" type="date" name="preferredDate" required
                       className="w-full px-4 py-3 rounded-xl text-sm outline-none font-body" style={inputStyle} />
                   </div>
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">Preferred Time *</label>
-                  <select name="preferredTime" required
+                  <label htmlFor="preferredTime" className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">Preferred Time *</label>
+                  <select id="preferredTime" name="preferredTime" required
                     className="w-full px-4 py-3 rounded-xl text-sm outline-none font-body" style={inputStyle}>
                     <option value="">Select a time</option>
                     <option>8:00 AM</option>
@@ -134,8 +134,8 @@ export default function Booking() {
                 </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">Session Type *</label>
-                  <select name="sessionType" required
+                  <label htmlFor="sessionType" className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">Session Type *</label>
+                  <select id="sessionType" name="sessionType" required
                     className="w-full px-4 py-3 rounded-xl text-sm outline-none font-body" style={inputStyle}>
                     <option value="">Select a session type</option>
                     <option>Individual Therapy</option>

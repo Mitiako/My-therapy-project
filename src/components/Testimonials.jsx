@@ -78,7 +78,7 @@ export default function Testimonials() {
         </div>
 
         <div className="flex items-center justify-center gap-4 mt-8">
-          <button onClick={prev} disabled={current === 0}
+          <button onClick={prev} disabled={current === 0} aria-label="Previous"
             className="w-11 h-11 rounded-full flex items-center justify-center transition-all
               disabled:opacity-30 disabled:cursor-not-allowed"
             style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', color: 'var(--color-text)', boxShadow: 'var(--shadow-soft)' }}
@@ -89,14 +89,14 @@ export default function Testimonials() {
 
           <div className="flex gap-2">
             {Array.from({ length: dotCount }).map((_, i) => (
-              <button key={i} onClick={() => setCurrent(Math.min(i * perPage, maxIndex))}
+              <button key={i} onClick={() => setCurrent(Math.min(i * perPage, maxIndex))} aria-label={`Go to slide ${i + 1}`}
                 className="h-2 rounded-full transition-all duration-300"
                 style={{ width: Math.floor(current / perPage) === i ? '24px' : '8px',
                   background: Math.floor(current / perPage) === i ? 'var(--color-forest)' : 'var(--color-border)' }} />
             ))}
           </div>
 
-          <button onClick={next} disabled={current >= maxIndex}
+          <button onClick={next} disabled={current >= maxIndex} aria-label="Next"
             className="w-11 h-11 rounded-full flex items-center justify-center transition-all
               disabled:opacity-30 disabled:cursor-not-allowed"
             style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', color: 'var(--color-text)', boxShadow: 'var(--shadow-soft)' }}
