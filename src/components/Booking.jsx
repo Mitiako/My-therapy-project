@@ -86,7 +86,8 @@ export default function Booking() {
                   <div>
                     <label className="block text-xs font-semibold uppercase tracking-wide text-theme mb-1.5">Preferred Time *</label>
                     <input type="time" name="preferredTime" required
-                      className="w-full px-4 py-3 rounded-xl text-sm outline-none font-body" style={inputStyle} />
+  step="900"
+  className="w-full px-4 py-3 rounded-xl text-sm outline-none font-body" style={inputStyle} />
                   </div>
                 </div>
                 <div>
