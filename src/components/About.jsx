@@ -1,128 +1,158 @@
-import React, { useState, useEffect, useRef } from 'react'
-import aboutVideo from '../assets/video/about.mp4'
+import React, { useState, useEffect, useRef } from "react";
+import aboutVideo from "../assets/video/about.mp4";
 
 const creds = [
-  { icon: '🏅', title: 'Licensed Therapist',  desc: 'Licensed Marriage and Family Therapist in Texas' },
-  { icon: '🤍', title: 'Compassionate Care',   desc: 'Client-centered approach focused on your unique needs' },
-  { icon: '🛡️', title: 'Safe & Confidential', desc: 'HIPAA-compliant, judgment-free environment' },
-]
+  {
+    icon: "🏅",
+    title: "Licensed Therapist",
+    desc: "Licensed Marriage and Family Therapist in Texas",
+  },
+  {
+    icon: "🤍",
+    title: "Compassionate Care",
+    desc: "Client-centered approach focused on your unique needs",
+  },
+  {
+    icon: "🛡️",
+    title: "Safe & Confidential",
+    desc: "HIPAA-compliant, judgment-free environment",
+  },
+];
 
 function InstagramBlock() {
-  const [step, setStep] = useState(0)
-  const ref = useRef(null)
-  const hasTriggered = useRef(false)
+  const [step, setStep] = useState(0);
+  const ref = useRef(null);
+  const hasTriggered = useRef(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasTriggered.current) {
-          hasTriggered.current = true
-          setStep(1)
+          hasTriggered.current = true;
+          setStep(1);
         }
       },
-      { threshold: 0.8 }
-    )
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [])
+      { threshold: 0.8 },
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (step === 1) {
       // спалах відбувається на 95% анімації (10s * 0.95 = 9.5s)
-      setTimeout(() => setStep(2), 9500 + 1000)
+      setTimeout(() => setStep(2), 1850);
     }
     if (step === 2) {
-      setTimeout(() => setStep(3), 400)
+      setTimeout(() => setStep(3), 400);
     }
-  }, [step])
+  }, [step]);
 
   return (
     <div ref={ref} className="mt-4 h-20 flex items-center">
       {step >= 1 && (
         <div className="flex items-center">
-
-          {/* Instagram CSS icon */}
-          <div style={{
-            height: '64px',
-            width: '64px',
-            overflow: 'hidden',
-            borderRadius: '14px',
-            position: 'relative',
-            flexShrink: 0,
-            animation: step === 1 ? 'ig_animate_logo 10s forwards' : 'none',
-            transform: step >= 2 ? 'scale(1)' : undefined,
-          }}>
-            {/* gradient background */}
-            <div style={{
-              position: 'absolute',
-              top: 0, left: 0,
-              width: '100%',
-              height: '2000px',
-              background: 'linear-gradient(135deg, #5335cf 0%, #de005e 25%, #f66e48 50%, #de005e 75%, #5335cf 100%)',
-              animation: step === 1 ? 'ig_animate_bg 10s forwards linear' : 'none',
-            }} />
-
-            {/* border */}
-            <div style={{
-              position: 'absolute',
-              top: '50%', left: '50%',
-              border: '3px #fff solid',
-              borderRadius: '14px',
-              width: '74%', height: '74%',
-              marginTop: '-37%', marginLeft: '-37%',
-              zIndex: 2,
-              animation: step === 1 ? 'ig_animate_border 10s forwards' : 'none',
-              transform: step >= 2 ? 'scale(1)' : undefined,
-            }} />
-
-            {/* circle */}
-            <div style={{
-              position: 'absolute',
-              top: '50%', left: '50%',
-              border: '3px #fff solid',
-              borderRadius: '50%',
-              width: '48%', height: '48%',
-              marginTop: '-24%', marginLeft: '-24%',
-              zIndex: 2,
-              animation: step === 1 ? 'ig_animate_circle 10s forwards' : 'none',
-              transform: step >= 2 ? 'scale(1)' : undefined,
-            }} />
-
-            {/* light dot */}
-            <div style={{
-              position: 'absolute',
-              border: '2px #fff solid',
-              borderRadius: '50%',
-              width: '12%', height: '12%',
-              right: '18%', top: '18%',
-              zIndex: 2,
-              animation: step === 1 ? 'ig_animate_light 10s forwards' : 'none',
-              opacity: step >= 2 ? 1 : undefined,
-            }} />
-          </div>
+          {/* Instagram SVG icon */}
+          <a
+            href="https://www.instagram.com/harmonia_vitalis"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              height: "30px",
+              width: "30px",
+              flexShrink: 0,
+              display: "block",
+              animation: step === 1 ? "ig_animate_logo 2s forwards" : "none",
+              transform: step >= 2 ? "scale(1)" : undefined,
+            }}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlnsXlink="http://www.w3.org/1999/xlink"
+              viewBox="0 0 132.004 132"
+              width="30"
+              height="30"
+            >
+              <defs>
+                <linearGradient id="ig_b">
+                  <stop offset="0" stopColor="#3771c8" />
+                  <stop stopColor="#3771c8" offset=".128" />
+                  <stop offset="1" stopColor="#60f" stopOpacity="0" />
+                </linearGradient>
+                <linearGradient id="ig_a">
+                  <stop offset="0" stopColor="#fd5" />
+                  <stop offset=".1" stopColor="#fd5" />
+                  <stop offset=".5" stopColor="#ff543e" />
+                  <stop offset="1" stopColor="#c837ab" />
+                </linearGradient>
+                <radialGradient
+                  id="ig_c"
+                  cx="158.429"
+                  cy="578.088"
+                  r="65"
+                  xlinkHref="#ig_a"
+                  gradientUnits="userSpaceOnUse"
+                  gradientTransform="matrix(0 -1.98198 1.8439 0 -1031.402 454.004)"
+                  fx="158.429"
+                  fy="578.088"
+                />
+                <radialGradient
+                  id="ig_d"
+                  cx="147.694"
+                  cy="473.455"
+                  r="65"
+                  xlinkHref="#ig_b"
+                  gradientUnits="userSpaceOnUse"
+                  gradientTransform="matrix(.17394 .86872 -3.5818 .71718 1648.348 -458.493)"
+                  fx="147.694"
+                  fy="473.455"
+                />
+              </defs>
+              <path
+                fill="url(#ig_c)"
+                d="M65.03 0C37.888 0 29.95.028 28.407.156c-5.57.463-9.036 1.34-12.812 3.22-2.91 1.445-5.205 3.12-7.47 5.468C4 13.126 1.5 18.394.595 24.656c-.44 3.04-.568 3.66-.594 19.188-.01 5.176 0 11.988 0 21.125 0 27.12.03 35.05.16 36.59.45 5.42 1.3 8.83 3.1 12.56 3.44 7.14 10.01 12.5 17.75 14.5 2.68.69 5.64 1.07 9.44 1.25 1.61.07 18.02.12 34.44.12 16.42 0 32.84-.02 34.41-.1 4.4-.207 6.955-.55 9.78-1.28 7.79-2.01 14.24-7.29 17.75-14.53 1.765-3.64 2.66-7.18 3.065-12.317.088-1.12.125-18.977.125-36.81 0-17.836-.04-35.66-.128-36.78-.41-5.22-1.305-8.73-3.127-12.44-1.495-3.037-3.155-5.305-5.565-7.624C116.9 4 111.64 1.5 105.372.596 102.335.157 101.73.027 86.19 0H65.03z"
+                transform="translate(1.004 1)"
+              />
+              <path
+                fill="url(#ig_d)"
+                d="M65.03 0C37.888 0 29.95.028 28.407.156c-5.57.463-9.036 1.34-12.812 3.22-2.91 1.445-5.205 3.12-7.47 5.468C4 13.126 1.5 18.394.595 24.656c-.44 3.04-.568 3.66-.594 19.188-.01 5.176 0 11.988 0 21.125 0 27.12.03 35.05.16 36.59.45 5.42 1.3 8.83 3.1 12.56 3.44 7.14 10.01 12.5 17.75 14.5 2.68.69 5.64 1.07 9.44 1.25 1.61.07 18.02.12 34.44.12 16.42 0 32.84-.02 34.41-.1 4.4-.207 6.955-.55 9.78-1.28 7.79-2.01 14.24-7.29 17.75-14.53 1.765-3.64 2.66-7.18 3.065-12.317.088-1.12.125-18.977.125-36.81 0-17.836-.04-35.66-.128-36.78-.41-5.22-1.305-8.73-3.127-12.44-1.495-3.037-3.155-5.305-5.565-7.624C116.9 4 111.64 1.5 105.372.596 102.335.157 101.73.027 86.19 0H65.03z"
+                transform="translate(1.004 1)"
+              />
+              <path
+                fill="#fff"
+                d="M66.004 18c-13.036 0-14.672.057-19.792.29-5.11.234-8.598 1.043-11.65 2.23-3.157 1.226-5.835 2.866-8.503 5.535-2.67 2.668-4.31 5.346-5.54 8.502-1.19 3.053-2 6.542-2.23 11.65C18.06 51.327 18 52.964 18 66s.058 14.667.29 19.787c.235 5.11 1.044 8.598 2.23 11.65 1.227 3.157 2.867 5.835 5.536 8.503 2.667 2.67 5.345 4.314 8.5 5.54 3.054 1.187 6.543 1.996 11.652 2.23 5.12.233 6.755.29 19.79.29 13.037 0 14.668-.057 19.788-.29 5.11-.234 8.602-1.043 11.656-2.23 3.156-1.226 5.83-2.87 8.497-5.54 2.67-2.668 4.31-5.346 5.54-8.502 1.18-3.053 1.99-6.542 2.23-11.65.23-5.12.29-6.752.29-19.788 0-13.036-.06-14.672-.29-19.792-.24-5.11-1.05-8.598-2.23-11.65-1.23-3.157-2.87-5.835-5.54-8.503-2.67-2.67-5.34-4.31-8.5-5.535-3.06-1.187-6.55-1.996-11.66-2.23-5.12-.233-6.75-.29-19.79-.29zm-4.306 8.65c1.278-.002 2.704 0 4.306 0 12.816 0 14.335.046 19.396.276 4.68.214 7.22.996 8.912 1.653 2.24.87 3.837 1.91 5.516 3.59 1.68 1.68 2.72 3.28 3.592 5.52.657 1.69 1.44 4.23 1.653 8.91.23 5.06.28 6.58.28 19.39s-.05 14.33-.28 19.39c-.214 4.68-.996 7.22-1.653 8.91-.87 2.24-1.912 3.835-3.592 5.514-1.68 1.68-3.275 2.72-5.516 3.59-1.69.66-4.232 1.44-8.912 1.654-5.06.23-6.58.28-19.396.28-12.817 0-14.336-.05-19.396-.28-4.68-.216-7.22-.998-8.913-1.655-2.24-.87-3.84-1.91-5.52-3.59-1.68-1.68-2.72-3.276-3.592-5.517-.657-1.69-1.44-4.23-1.653-8.91-.23-5.06-.276-6.58-.276-19.398s.046-14.33.276-19.39c.214-4.68.996-7.22 1.653-8.912.87-2.24 1.912-3.84 3.592-5.52 1.68-1.68 3.28-2.72 5.52-3.592 1.692-.66 4.233-1.44 8.913-1.655 4.428-.2 6.144-.26 15.09-.27zm29.928 7.97c-3.18 0-5.76 2.577-5.76 5.758 0 3.18 2.58 5.76 5.76 5.76 3.18 0 5.76-2.58 5.76-5.76 0-3.18-2.58-5.76-5.76-5.76zm-25.622 6.73c-13.613 0-24.65 11.037-24.65 24.65 0 13.613 11.037 24.645 24.65 24.645C79.617 90.645 90.65 79.613 90.65 66S79.616 41.35 66.003 41.35zm0 8.65c8.836 0 16 7.163 16 16 0 8.836-7.164 16-16 16-8.837 0-16-7.164-16-16 0-8.837 7.163-16 16-16z"
+              />
+            </svg>
+          </a>
 
           {/* Liquid glass pill */}
           {step >= 2 && (
-            <a href="https://www.instagram.com/harmonia_vitalis"
-              target="_blank" rel="noopener noreferrer"
+            <a
+              href="https://www.instagram.com/harmonia_vitalis"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center overflow-hidden rounded-full"
               style={{
-                backdropFilter: 'blur(12px)',
-                WebkitBackdropFilter: 'blur(12px)',
-                background: 'rgba(255,255,255,0.15)',
-                border: '1px solid rgba(255,255,255,0.3)',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.2)',
-                maxWidth: step === 3 ? '200px' : '0px',
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+                background: "rgba(255,255,255,0.15)",
+                border: "1px solid rgba(255,255,255,0.3)",
+                boxShadow:
+                  "0 4px 20px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.2)",
+                maxWidth: step === 3 ? "200px" : "0px",
                 opacity: step === 3 ? 1 : 0,
-                transition: 'max-width 0.4s ease, opacity 0.4s ease',
-                marginLeft: '8px',
-                paddingLeft: '16px',
-                paddingRight: '16px',
-                height: '40px',
-                whiteSpace: 'nowrap',
-              }}>
-              <span className="text-sm font-medium"
-                style={{ color: 'var(--color-text)' }}>
+                transition: "max-width 0.4s ease, opacity 0.4s ease",
+                marginLeft: "8px",
+                paddingLeft: "16px",
+                paddingRight: "16px",
+                height: "22px",
+                whiteSpace: "nowrap",
+              }}
+            >
+              <span
+                className="text-sm font-medium"
+                style={{ color: "var(--color-text)" }}
+              >
                 @harmonia_vitalis
               </span>
             </a>
@@ -131,98 +161,106 @@ function InstagramBlock() {
       )}
 
       <style>{`
-        @keyframes ig_animate_bg {
-          0% { top: 0; }
-          50% { top: -1800px; }
-          95% { top: 0; }
-          100% { top: 0; }
-        }
+        
         @keyframes ig_animate_logo {
-          0% { transform: scale(0); border-radius: 14px; }
-          5% { transform: scale(1.1); border-radius: 50%; }
-          10% { transform: scale(1); border-radius: 14px; }
-          94% { transform: scale(1); border-radius: 14px; }
-          100% { transform: scale(1); border-radius: 14px; }
-        }
-        @keyframes ig_animate_border {
-          0% { border-radius: 50%; transform: scale(0); opacity: 0; }
-          2% { opacity: 0; }
-          18% { border-radius: 14px; transform: scale(1); opacity: 1; }
-          100% { border-radius: 14px; transform: scale(1); opacity: 1; }
-        }
-        @keyframes ig_animate_circle {
-          0% { transform: scale(0); opacity: 0; }
-          5% { transform: scale(0); opacity: 0; }
-          10% { transform: scale(1.3); opacity: 1; }
-          15% { transform: scale(1); }
-          94% { transform: scale(1); background-color: transparent; }
-          97% { transform: scale(1.2); background-color: #ffffff; }
-          100% { transform: scale(1); background-color: transparent; }
-        }
-        @keyframes ig_animate_light {
-          0% { opacity: 0; }
-          20% { opacity: 0; }
-          25% { opacity: 1; }
-          94% { opacity: 1; }
-          100% { opacity: 1; }
-        }
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.1); opacity: 1; }
+  80% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+        
       `}</style>
     </div>
-  )
+  );
 }
 
 export default function About() {
   return (
-    <section id="about" className="section-py transition-colors duration-500" style={{ background: 'var(--color-bg)' }}>
+    <section
+      id="about"
+      className="section-py transition-colors duration-500"
+      style={{ background: "var(--color-bg)" }}
+    >
       <div className="container-custom">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-
           <div className="reveal from-left">
-  <div className="relative w-full overflow-hidden rounded-2xl" style={{ height: '400px', boxShadow: 'var(--shadow-md)' }}>
-    <video src={aboutVideo} autoPlay muted loop playsInline
-      style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
-  </div>
+            <div
+              className="relative w-full overflow-hidden rounded-2xl"
+              style={{ height: "400px", boxShadow: "var(--shadow-md)" }}
+            >
+              <video
+                src={aboutVideo}
+                autoPlay
+                muted
+                loop
+                playsInline
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  objectPosition: "center",
+                }}
+              />
+            </div>
 
-  {/* Instagram animated block */}
-  <InstagramBlock />
-</div>
+            {/* Instagram animated block */}
+            <InstagramBlock />
+          </div>
 
           <div className="reveal from-right">
-            <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: 'var(--color-terra)' }}>About Me</p>
+            <p
+              className="text-xs font-semibold tracking-widest uppercase mb-3"
+              style={{ color: "var(--color-terra)" }}
+            >
+              About Me
+            </p>
             <h2 className="font-heading font-bold text-theme text-4xl lg:text-5xl leading-tight mb-6">
               Meet Vitalina Tarasenko
             </h2>
             <p className="text-muted leading-relaxed mb-4">
-              With years of experience in marriage and family therapy, I am dedicated to helping individuals,
-              couples, and families navigate life's challenges with compassion and evidence-based practices.
+              With years of experience in marriage and family therapy, I am
+              dedicated to helping individuals, couples, and families navigate
+              life's challenges with compassion and evidence-based practices.
             </p>
             <p className="text-muted leading-relaxed mb-4">
-              My therapeutic approach integrates cognitive-behavioral therapy, emotionally focused therapy,
-              and systemic family therapy to create personalized treatment plans that honor your unique story and goals.
+              My therapeutic approach integrates cognitive-behavioral therapy,
+              emotionally focused therapy, and systemic family therapy to create
+              personalized treatment plans that honor your unique story and
+              goals.
             </p>
             <p className="text-muted leading-relaxed mb-8">
-              I provide online-only sessions to clients throughout Texas, ensuring accessibility and convenience
-              while maintaining the highest standards of professional care.
+              I provide online-only sessions to clients throughout Texas,
+              ensuring accessibility and convenience while maintaining the
+              highest standards of professional care.
             </p>
 
             <div className="flex flex-col gap-5">
               {creds.map((c, i) => (
-                <div key={i} className={`reveal delay-${i + 1} flex items-start gap-4`}>
-                  <div className="w-12 h-12 flex-shrink-0 rounded-full flex items-center justify-center text-xl"
-                    style={{ background: 'var(--color-forest-soft)' }}>
+                <div
+                  key={i}
+                  className={`reveal delay-${i + 1} flex items-start gap-4`}
+                >
+                  <div
+                    className="w-12 h-12 flex-shrink-0 rounded-full flex items-center justify-center text-xl"
+                    style={{ background: "var(--color-forest-soft)" }}
+                  >
                     {c.icon}
                   </div>
                   <div>
-                    <p className="font-heading font-semibold text-theme mb-1">{c.title}</p>
+                    <p className="font-heading font-semibold text-theme mb-1">
+                      {c.title}
+                    </p>
                     <p className="text-sm text-muted">{c.desc}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-
         </div>
       </div>
     </section>
-  )
+  );
 }
