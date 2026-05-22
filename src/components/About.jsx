@@ -1,10 +1,88 @@
+import React, { useState, useEffect, useRef, Suspense } from 'react'
+import instagramAnimation from '../assets/animations/Instagram.json'
 import aboutVideo from '../assets/video/about.mp4'
+
+const Lottie = React.lazy(() => import('lottie-react'))
 
 const creds = [
   { icon: '🏅', title: 'Licensed Therapist',  desc: 'Licensed Marriage and Family Therapist in Texas' },
   { icon: '🤍', title: 'Compassionate Care',   desc: 'Client-centered approach focused on your unique needs' },
   { icon: '🛡️', title: 'Safe & Confidential', desc: 'HIPAA-compliant, judgment-free environment' },
 ]
+
+function InstagramBlock() {
+  const [step, setStep] = useState(0)
+  // 0 = hidden, 1 = lottie playing, 2 = pill expanding, 3 = done
+  const ref = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && step === 0) setStep(1)
+      },
+      { threshold: 0.8 }
+    )
+    if (ref.current) observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [step])
+
+  useEffect(() => {
+    if (step === 1) {
+      setTimeout(() => setStep(2), 750 + 500)
+    }
+    if (step === 2) {
+      setTimeout(() => setStep(3), 400)
+    }
+  }, [step])
+
+  return (
+    <div ref={ref} className="mt-4 h-14 flex items-center">
+      {step === 0 && null}
+
+      {step >= 1 && (
+        <div className="relative flex items-center">
+          {/* Lottie Instagram icon */}
+          <div className="w-14 h-14 flex-shrink-0">
+            <Suspense fallback={<div className="w-14 h-14" />}>
+  <Lottie
+    animationData={instagramAnimation}
+    loop={false}
+    autoplay={true}
+  />
+</Suspense>
+          </div>
+
+          {/* Liquid glass pill */}
+          {step >= 2 && (
+            <a href="https://www.instagram.com/harmonia_vitalis"
+              target="_blank" rel="noopener noreferrer"
+              className="flex items-center overflow-hidden rounded-full"
+              style={{
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)',
+                background: 'rgba(255,255,255,0.15)',
+                border: '1px solid rgba(255,255,255,0.3)',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.2)',
+                maxWidth: step === 3 ? '180px' : '0px',
+                opacity: step === 3 ? 1 : 0,
+                transition: 'max-width 0.4s ease, opacity 0.4s ease',
+                marginLeft: '-8px',
+                paddingLeft: '16px',
+                paddingRight: '16px',
+                height: '40px',
+                whiteSpace: 'nowrap',
+              }}>
+              <span className="text-sm font-medium"
+                style={{ color: 'var(--color-text)' }}>
+                @harmonia_vitalis
+              </span>
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+  )
+}
 
 export default function About() {
   return (
@@ -18,50 +96,8 @@ export default function About() {
       style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
   </div>
 
-  {/* Instagram link */}
-  <a href="https://www.instagram.com/harmonia_vitalis" target="_blank" rel="noopener noreferrer"
-    className="mt-4 flex items-center gap-3 px-5 py-3 rounded-full w-fit transition-all duration-500 cursor-pointer"
-    style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)' }}
-    onMouseEnter={e => {
-      e.currentTarget.style.background = 'white'
-      e.currentTarget.style.border = '1px solid white'
-      e.currentTarget.style.transform = 'scale(1.03)'
-      e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.12)'
-    }}
-    onMouseLeave={e => {
-      e.currentTarget.style.background = 'var(--color-surface)'
-      e.currentTarget.style.border = '1px solid var(--color-border)'
-      e.currentTarget.style.transform = 'scale(1)'
-      e.currentTarget.style.boxShadow = 'none'
-    }}>
-
-    {/* Instagram gradient icon */}
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" strokeWidth="1.8">
-      <defs>
-        <linearGradient id="igGradAbout" x1="0%" y1="100%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#f09433"/>
-          <stop offset="25%" stopColor="#e6683c"/>
-          <stop offset="50%" stopColor="#dc2743"/>
-          <stop offset="75%" stopColor="#cc2366"/>
-          <stop offset="100%" stopColor="#bc1888"/>
-        </linearGradient>
-      </defs>
-      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="url(#igGradAbout)"/>
-      <circle cx="12" cy="12" r="4" stroke="url(#igGradAbout)"/>
-      <circle cx="17.5" cy="6.5" r="0.8" fill="url(#igGradAbout)"/>
-    </svg>
-
-    <span className="text-sm font-medium transition-colors duration-500"
-      style={{ color: 'var(--color-text)' }}
-      ref={el => {
-        if (el) {
-          el.closest('a').addEventListener('mouseenter', () => { el.style.color = '#bc1888' })
-          el.closest('a').addEventListener('mouseleave', () => { el.style.color = 'var(--color-text)' })
-        }
-      }}>
-      @harmonia_vitalis
-    </span>
-  </a>
+  {/* Instagram animated block */}
+  <InstagramBlock />
 </div>
 
           <div className="reveal from-right">
