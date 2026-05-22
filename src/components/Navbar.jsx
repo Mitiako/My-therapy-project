@@ -78,14 +78,10 @@ export default function Navbar({ onBookClick }) {
         style={{ background: 'var(--color-navbar)', backdropFilter: 'blur(16px)' }}>
 
         <a href="#" className="flex items-center gap-3" onClick={e => handleLink(e, '#hero')}>
-          <img 
-  src="/My-therapy-project/HarmoniaVitalis-logo.png" 
-  alt="HarmoniaVitalis logo" 
-  className="h-14 w-auto flex-shrink-0"
-/>
+          
 <span style={{
   fontFamily: "'Fleur De Leah', cursive",
-  fontSize: '2rem',
+  fontSize: '42px',
   background: 'linear-gradient(135deg, #4A7C59, #C97A63, #E8A87C)',
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
