@@ -81,8 +81,7 @@ export default function Navbar({ onBookClick }) {
           
 <span style={{
   fontFamily: "'Fleur De Leah', cursive",
-  fontSize: '42px',
-  background: 'linear-gradient(135deg, #4A7C59, #C97A63, #E8A87C)',
+fontSize: 'clamp(32px, 4vw, 42px)',  background: 'linear-gradient(135deg, #4A7C59, #C97A63, #E8A87C)',
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
 }}>
