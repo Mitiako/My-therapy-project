@@ -88,18 +88,18 @@ export default function Booking() {
                   <select name="preferredTime" required
                     className="w-full px-4 py-3 rounded-xl text-sm outline-none font-body" style={inputStyle}>
                     <option value="">Select a time</option>
-                    <option>8:00 PM</option>
-                    <option>8:15 PM</option>
-                    <option>8:30 PM</option>
-                    <option>8:45 PM</option>
-                    <option>9:00 PM</option>
-                    <option>9:15 PM</option>
-                    <option>9:30 PM</option>
-                    <option>9:45 PM</option>
-                    <option>10:00 PM</option>
-                    <option>10:15 PM</option>
-                    <option>10:30 PM</option>
-                    <option>10:45 PM</option>
+                    <option>8:00 AM</option>
+                    <option>8:15 AM</option>
+                    <option>8:30 AM</option>
+                    <option>8:45 AM</option>
+                    <option>9:00 AM</option>
+                    <option>9:15 AM</option>
+                    <option>9:30 AM</option>
+                    <option>9:45 AM</option>
+                    <option>10:00 AM</option>
+                    <option>10:15 AM</option>
+                    <option>10:30 AM</option>
+                    <option>10:45 AM</option>
                     <option>11:00 AM</option>
                     <option>11:15 AM</option>
                     <option>11:30 AM</option>
