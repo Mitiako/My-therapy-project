@@ -12,44 +12,46 @@ const creds = [
 
 function InstagramBlock() {
   const [step, setStep] = useState(0)
-  // 0 = hidden, 1 = lottie playing, 2 = pill expanding, 3 = done
   const ref = useRef(null)
+  const hasTriggered = useRef(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && step === 0) setStep(1)
+        if (entry.isIntersecting && !hasTriggered.current) {
+          hasTriggered.current = true
+          setStep(1)
+        }
       },
       { threshold: 0.8 }
     )
     if (ref.current) observer.observe(ref.current)
     return () => observer.disconnect()
-  }, [step])
+  }, [])
 
   useEffect(() => {
     if (step === 1) {
-      setTimeout(() => setStep(2), 750 + 500)
+      setTimeout(() => setStep(2), 750 + 400) // скоротили на 100мс
     }
     if (step === 2) {
-      setTimeout(() => setStep(3), 400)
+      setTimeout(() => setStep(3), 200) // скоротили вдвічі
     }
   }, [step])
 
   return (
     <div ref={ref} className="mt-4 h-14 flex items-center">
-      {step === 0 && null}
-
       {step >= 1 && (
-        <div className="relative flex items-center">
+        <div className="flex items-center">
           {/* Lottie Instagram icon */}
           <div className="w-14 h-14 flex-shrink-0">
             <Suspense fallback={<div className="w-14 h-14" />}>
-  <Lottie
-    animationData={instagramAnimation}
-    loop={false}
-    autoplay={true}
-  />
-</Suspense>
+              <Lottie
+                animationData={instagramAnimation}
+                loop={false}
+                autoplay={true}
+                onComplete={() => {}}
+              />
+            </Suspense>
           </div>
 
           {/* Liquid glass pill */}
@@ -66,7 +68,7 @@ function InstagramBlock() {
                 maxWidth: step === 3 ? '180px' : '0px',
                 opacity: step === 3 ? 1 : 0,
                 transition: 'max-width 0.4s ease, opacity 0.4s ease',
-                marginLeft: '-8px',
+                marginLeft: '4px',
                 paddingLeft: '16px',
                 paddingRight: '16px',
                 height: '40px',
