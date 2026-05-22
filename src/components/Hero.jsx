@@ -109,7 +109,7 @@ export default function Hero({ onBookClick }) {
       </div>
 
       <div
-        className="flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-1
+        className="flex absolute bottom-4 left-0 right-0 flex-col items-center gap-1
   opacity-0 animate-[fadeUp_0.8s_ease_1.5s_forwards]"
       >
         <span className="text-[10px] tracking-[0.15em] text-faint">SCROLL</span>
