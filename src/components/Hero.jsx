@@ -114,7 +114,7 @@ export default function Hero({ onBookClick }) {
       >
         <span className="text-[10px] tracking-[0.15em] text-faint">SCROLL</span>
         <div
-          className="w-px h-12 scroll-line"
+          className="w-px h-6 scroll-line"
           style={{
             background:
               "linear-gradient(to bottom, var(--color-text-faint), transparent)",
