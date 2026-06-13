@@ -1,19 +1,20 @@
 import React, { useState, useEffect, useRef } from "react";
 import aboutVideo from "../assets/video/about.mp4";
+import { BadgeCheck, HeartHandshake, ShieldCheck } from "lucide-react";
 
 const creds = [
   {
-    icon: "🏅",
+    icon: BadgeCheck,
     title: "Licensed Therapist",
     desc: "Licensed Marriage and Family Therapist in Texas",
   },
   {
-    icon: "🤍",
+    icon: HeartHandshake,
     title: "Compassionate Care",
     desc: "Client-centered approach focused on your unique needs",
   },
   {
-    icon: "🛡️",
+    icon: ShieldCheck,
     title: "Safe & Confidential",
     desc: "HIPAA-compliant, judgment-free environment",
   },
@@ -244,10 +245,13 @@ export default function About() {
                   className={`reveal delay-${i + 1} flex items-start gap-4`}
                 >
                   <div
-                    className="w-12 h-12 flex-shrink-0 rounded-full flex items-center justify-center text-xl"
+                    className="w-12 h-12 flex-shrink-0 rounded-full flex items-center justify-center"
                     style={{ background: "var(--color-forest-soft)" }}
                   >
-                    {c.icon}
+                    <c.icon
+                      size={22}
+                      style={{ color: "var(--color-forest)" }}
+                    />
                   </div>
                   <div>
                     <p className="font-heading font-semibold text-theme mb-1">

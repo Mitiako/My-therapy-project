@@ -1,4 +1,5 @@
 import { useForm, ValidationError } from "@formspree/react";
+import { Clock3, LaptopMinimalCheck, MapPinCheck } from "lucide-react";
 
 export default function Booking() {
   const [state, handleSubmit] = useForm("mkoernqd");
@@ -37,27 +38,30 @@ export default function Booking() {
               </h3>
               {[
                 {
-                  icon: "⏱",
+                  icon: Clock3,
                   title: "50-Minute Sessions",
                   desc: "Each session is designed to provide focused, meaningful therapeutic work.",
                 },
                 {
-                  icon: "💻",
+                  icon: LaptopMinimalCheck,
                   title: "Online Only",
                   desc: "Secure video sessions from the comfort of your home.",
                 },
                 {
-                  icon: "📍",
+                  icon: MapPinCheck,
                   title: "Texas Residents Only",
                   desc: "Available to clients physically located in Texas.",
                 },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-4 mb-5 last:mb-0">
                   <div
-                    className="w-12 h-12 flex-shrink-0 rounded-full flex items-center justify-center text-xl"
+                    className="w-12 h-12 flex-shrink-0 rounded-full flex items-center justify-center"
                     style={{ background: "var(--color-forest-soft)" }}
                   >
-                    {item.icon}
+                    <item.icon
+                      size={22}
+                      style={{ color: "var(--color-forest)" }}
+                    />
                   </div>
                   <div>
                     <p className="font-heading font-semibold text-theme text-sm mb-1">
