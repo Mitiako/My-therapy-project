@@ -20,6 +20,10 @@ function ServiceCard({ service, onBookClick, delay }) {
     }
   };
 
+  const handleMouseEnterFixed = () => {
+    videoRef.current?.play();
+  };
+
   return (
     <div
       className={`reveal delay-${delay} rounded-2xl overflow-hidden flex flex-col
@@ -28,7 +32,7 @@ function ServiceCard({ service, onBookClick, delay }) {
         background: "var(--color-surface)",
         boxShadow: "var(--shadow-soft)",
       }}
-      onMouseEnter={handleMouseEnter}
+      onMouseEnter={handleMouseEnterFixed}
       onMouseLeave={handleMouseLeave}
     >
       <div className="relative overflow-hidden" style={{ height: "240px" }}>
@@ -38,7 +42,6 @@ function ServiceCard({ service, onBookClick, delay }) {
           muted
           loop
           playsInline
-          autoPlay
           style={{
             position: "absolute",
             top: 0,
