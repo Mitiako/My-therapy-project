@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { services } from "../data";
 import singleVideo from "../assets/video/single.mp4";
 import coupleVideo from "../assets/video/couple.mp4";
@@ -12,6 +12,29 @@ const videoMap = {
 
 function ServiceCard({ service, onBookClick, delay }) {
   const videoRef = useRef(null);
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    const card = cardRef.current;
+    if (!video || !card) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+          video.currentTime = 0;
+        }
+      },
+      { threshold: 0.1 },
+    );
+
+    observer.observe(card);
+    return () => observer.disconnect();
+  }, []);
+
   const handleMouseEnter = () => videoRef.current?.play();
   const handleMouseLeave = () => {
     if (videoRef.current) {
@@ -20,19 +43,16 @@ function ServiceCard({ service, onBookClick, delay }) {
     }
   };
 
-  const handleMouseEnterFixed = () => {
-    videoRef.current?.play();
-  };
-
   return (
     <div
+      ref={cardRef}
       className={`reveal delay-${delay} rounded-2xl overflow-hidden flex flex-col
       hover:-translate-y-2 transition-all duration-300`}
       style={{
         background: "var(--color-surface)",
         boxShadow: "var(--shadow-soft)",
       }}
-      onMouseEnter={handleMouseEnterFixed}
+      onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <div className="relative overflow-hidden" style={{ height: "240px" }}>
