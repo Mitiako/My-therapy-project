@@ -20,15 +20,20 @@
       name="description"
       content="Compassionate online therapy for individuals, couples, and families in Texas. Licensed Marriage and Family Therapist — Vitalina Tarasenko."
     />
-    <meta name="robots" content="index, follow" />
-    <link
-      rel="canonical"
-      href="https://mitiako.github.io/My-therapy-project/"
-    />
+    <meta name="robots" content="index, follow" id="robots-meta" />
+    <script>
+      (function () {
+        if (window.location.hostname === "mitiako.github.io") {
+          var meta = document.getElementById("robots-meta");
+          if (meta) meta.setAttribute("content", "noindex, nofollow");
+        }
+      })();
+    </script>
+    <link rel="canonical" href="https://my-therapy-project.vercel.app/" />
     <link
       rel="alternate"
       hreflang="en"
-      href="https://mitiako.github.io/My-therapy-project/"
+      href="https://my-therapy-project.vercel.app/"
     />
     <!-- OpenGraph -->
     <meta
@@ -41,15 +46,11 @@
     />
     <meta
       property="og:image"
-      content="https://mitiako.github.io/My-therapy-project/HarmoniaVitalis-OpenGraph.png"
+      content="https://my-therapy-project.vercel.app/HarmoniaVitalis-OpenGraph.png"
     />
-    <meta
-      property="og:url"
-      content="https://mitiako.github.io/My-therapy-project/"
-    />
+    <meta property="og:url" content="https://my-therapy-project.vercel.app/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="HarmoniaVitalis" />
-
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
@@ -62,7 +63,7 @@
     />
     <meta
       name="twitter:image"
-      content="https://mitiako.github.io/My-therapy-project/HarmoniaVitalis-OpenGraph.png"
+      content="https://my-therapy-project.vercel.app/HarmoniaVitalis-OpenGraph.png"
     />
     <meta name="color-scheme" content="light dark" />
     <meta name="samsung-internet:force-dark-mode" content="false" />
@@ -77,16 +78,27 @@
       content="#1A2B2B"
       media="(prefers-color-scheme: dark)"
     />
-
     <link rel="icon" type="image/png" href="/My-therapy-project/favicon.png" />
-
     <title>HarmoniaVitalis — Online Therapy Texas | LMFT</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Fleur+De+Leah&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Nunito+Sans:wght@300;400;500;600;700&display=swap"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Fleur+De+Leah&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Nunito+Sans:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Fleur+De+Leah&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Nunito+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -94,8 +106,8 @@
         "name": "Vitalina Tarasenko",
         "jobTitle": "Licensed Marriage and Family Therapist",
         "description": "Compassionate online therapy for individuals, couples, and families in Texas.",
-        "url": "https://mitiako.github.io/My-therapy-project/",
-        "image": "https://mitiako.github.io/My-therapy-project/HarmoniaVitalis-OpenGraph.png",
+        "url": "https://my-therapy-project.vercel.app/",
+        "image": "https://my-therapy-project.vercel.app/HarmoniaVitalis-OpenGraph.png",
         "address": {
           "@type": "PostalAddress",
           "addressRegion": "TX",
